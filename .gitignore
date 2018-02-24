@@ -50,3 +50,12 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Build directory
+build/
+
+# Certificates
+certs/
+
+# Old esp32 SDK config
+sdkconfig.old
