@@ -361,7 +361,7 @@ void aws_iot_task(void *param) {
         vTaskDelay(5000 / portTICK_RATE_MS);
         float temperature = getTemperature();
         time_t now; time(&now);
-        sprintf(cPayload, "{\"time\" : \"%lu\", \"temperature\" : \"%.2f\"}", now, temperature);
+        sprintf(cPayload, "{\"time\" : %lu, \"temperature\" : %.2f}", now, temperature);
         paramsQOS0.payloadLen = strlen(cPayload);
         rc = aws_iot_mqtt_publish(&client, TOPIC, TOPIC_LEN, &paramsQOS0);
 
