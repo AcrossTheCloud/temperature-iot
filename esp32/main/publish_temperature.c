@@ -250,8 +250,6 @@ void disconnectCallbackHandler(AWS_IoT_Client *pClient, void *data) {
 void aws_iot_task(void *param) {
     char cPayload[100];
 
-    int32_t i = 0;
-
     IoT_Error_t rc = FAILURE;
 
     AWS_IoT_Client client;
