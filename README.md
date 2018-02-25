@@ -1,11 +1,8 @@
 # temperature-iot
 esp32 + lambda API + charting code for temperature sensing
 
-## legal
-AWS and SNTP portions of the esp32 code from the [Espressif IoT Development Framework](https://github.com/espressif/esp-idf) licensed under the [Apache license](LICENSE.apache), the rest licensed under the [GPL-v3 license](LICENSE).
-
-## steps
-1. Pick a region from [https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/] that supports API Gateway, Lambda, DynamoDB, and IoT, and make sure you use that region (from the console dropdown menu) when it comes to configure AWS IoT, and also update in the [serverless.yml file](https://github.com/AcrossTheCloud/temperature-iot/blob/master/api/serverless.yml#L24) with the corresponding region string from the [table here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
+## Steps
+1. Pick a region from [the region list](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/) that supports API Gateway, Lambda, DynamoDB, and IoT, and make sure you use that region (from the console dropdown menu) when it comes to configure AWS IoT, and also update in the [serverless.yml file](https://github.com/AcrossTheCloud/temperature-iot/blob/master/api/serverless.yml#L24) with the corresponding region string from the [table here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
 2. Deploy the API per instructions below and update the web code.
 3. Put the web code (under web/) somewhere, e.g. an [s3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html) optionally with [CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/MigrateS3ToCloudFront.html).
 4. Configure AWS IoT.
@@ -24,11 +21,10 @@ serverless deploy
 note the output URL here and update the [URL in the web code](https://github.com/AcrossTheCloud/temperature-iot/blob/master/web/js/temperature_plot.js#L25).
 
 ## Configure AWS IoT
-1. Create an AWS account if you don't have one and sign in to the IoT console. [docs](https://docs.aws.amazon.com/iot/latest/developerguide/iot-console-signin.html)
-2. Register a thing. [docs](https://docs.aws.amazon.com/iot/latest/developerguide/register-device.html)
+1. [Create an AWS account if you don't have one and sign in to the IoT console.](https://docs.aws.amazon.com/iot/latest/developerguide/iot-console-signin.html)
+2. [Register a thing.](https://docs.aws.amazon.com/iot/latest/developerguide/register-device.html)
 3. [Create the certificate](https://docs.aws.amazon.com/iot/latest/developerguide/create-device-certificate.html) and download and copy the one ending with ".cert.pem" into esp32/main/certs/certificate.pem.crt and the one ending ".private.key" into esp32/main/certs/private.pem.key".
-https://docs.aws.amazon.com/iot/latest/developerguide/create-device-certificate.html
-4. Create a [policy](https://docs.aws.amazon.com/iot/latest/developerguide/create-iot-policy.html) and when it comes to the part to add statements, add one for "iot:Connect", replacing "replaceWithAClientId" with "my_temperature_esp32" (without quotes) and effect "allow", then another one for "iot:\*", replacing "replaceWithATopic" with "topic/temperature" (without quotes, and note the word topic will appear twice as "topic/topic/temperature" on the end), and effect "allow".
+4. [Create a policy](https://docs.aws.amazon.com/iot/latest/developerguide/create-iot-policy.html) and when it comes to the part to add statements, add one for "iot:Connect", replacing "replaceWithAClientId" with "my_temperature_esp32" (without quotes) and effect "allow", then another one for "iot:\*", replacing "replaceWithATopic" with "topic/temperature" (without quotes, and note the word topic will appear twice as "topic/topic/temperature" on the end), and effect "allow".
 5. Create a rule to transfer the IoT data into the dynamoDB table created automatically as part of the API deployment step. To do this, go to "act" in the IoT console, then create a rule. On the "create a rule" page, enter a name (e.g. temperature, but can be anything you like here), under "attribute" enter "\*" (without quotes), under "topic filter" enter "topic/temperature" (you guessed it, no quotes here although you will see single quotes automatically entered above), then "add an action". On the "select an action page" select "Split messages into multiple columns of a database table (DynamoDBv2)" then configure action. On the "Configure action" page select the "temperature" table under the table name dropdown. Click "create a new IAM role" and an enter a name (e.g. temperature but can be anything), then you need to select it from the dropdown (as it doesn't stay there), and then click "update role", then "add action" then "create rule".
 
 ## Build the sensor
@@ -62,5 +58,8 @@ then
 make flash
 ```
 
-## end result
+## End result
 You can see what this looks here: [https://temperature.acrossthecloud.net]
+
+## Legal
+AWS and SNTP portions of the esp32 code from the [Espressif IoT Development Framework](https://github.com/espressif/esp-idf) licensed under the [Apache license](LICENSE.apache), the rest licensed under the [GPL-v3 license](LICENSE).
