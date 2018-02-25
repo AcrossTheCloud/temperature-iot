@@ -67,7 +67,7 @@ static const char *TAG = "subpub";
 #define EXAMPLE_WIFI_PASS CONFIG_WIFI_PASSWORD
 
 // which analog pin to connect
-#define THERMISTORPIN 36
+#define THERMISTORPIN ADC1_CHANNEL_0
 // resistance at 25 degrees C
 #define THERMISTORNOMINAL 10000
 // temp. for nominal resistance (almost always 25 C)
@@ -134,12 +134,12 @@ static void initialise_wifi(void);
 float getTemperature(void) {
   uint8_t i;
   float average;
-  uint16_t samples[NUMSAMPLES];
+  uint32_t samples[NUMSAMPLES];
 
   // take N samples in a row, with a slight delay
   for (i=0; i< NUMSAMPLES; i++) {
-   samples[i] = 4096-adc1_get_raw(ADC1_CHANNEL_0);
-     vTaskDelay(10 / portTICK_RATE_MS);
+   samples[i] = 4096-adc1_get_raw(THERMISTORPIN);
+   vTaskDelay(10 / portTICK_RATE_MS);
   }
 
   // average all the samples out
@@ -157,14 +157,13 @@ float getTemperature(void) {
 
   float steinhart;
   steinhart = average / THERMISTORNOMINAL;     // (R/Ro)
-  steinhart = log2f(steinhart);                  // ln(R/Ro)
+  steinhart = logf(steinhart);                  // ln(R/Ro)
   steinhart /= BCOEFFICIENT;                   // 1/B * ln(R/Ro)
   steinhart += 1.0 / (TEMPERATURENOMINAL + 273.15); // + (1/To)
   steinhart = 1.0 / steinhart;                 // Invert
   steinhart -= 273.15;                         // convert to C
 
   return steinhart;
-
 }
 
 static void initialize_sntp(void)
@@ -403,7 +402,6 @@ void app_main()
         err = nvs_flash_init();
     }
     ESP_ERROR_CHECK( err );
-
 
     obtain_time(); // also initializes wifi
 #ifdef CONFIG_MBEDTLS_DEBUG
