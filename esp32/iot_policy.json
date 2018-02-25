@@ -1,0 +1,15 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "iot:Connect",
+      "Resource": "arn:aws:iot:ap-southeast-2:455563481328:client/my_temperature_esp32"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "iot:*",
+      "Resource": "arn:aws:iot:ap-southeast-2:455563481328:topic/topic/temperature"
+    }
+  ]
+}
