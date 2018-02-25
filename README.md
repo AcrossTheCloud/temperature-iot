@@ -31,7 +31,7 @@ note the output URL here and update the [URL in the web code](https://github.com
 * An [Adafruit Huzzah esp32](https://core-electronics.com.au/adafruit-huzzah32-esp32-feather-board-pre-soldered.html) board.
 * A [thermistor](https://core-electronics.com.au/10k-precision-epoxy-thermistor-3950-ntc.html) (note if you use one with different characteristics be sure to update those values in the `#define` lines in [the esp32 code](esp32/publish_temperature.c)) and corresponding [10k resistor](https://core-electronics.com.au/resistor-10k-ohm-1-4-watt-pth-20-pack-thick-leads.html), plus [breadboard](https://core-electronics.com.au/solderless-breadboard-300-tie-points-zy-60.html) and [m-f jumper wires](https://core-electronics.com.au/jumper-wires-7-8-f-m-high-quality-30-pack.html).
 
-Connect as per the [schematic][esp32/schematic.jpg].
+Connect as per the [schematic](esp32/schematic.jpg).
 
 Sometimes you can find packages with the termistor and resistor combined as in my setup:
 <br />![Photo of hardware](photo.jpg "Photo of hardware.")
