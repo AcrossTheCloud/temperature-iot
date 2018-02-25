@@ -12,8 +12,9 @@ How to use an esp32 board plus an AWS Lambda API plus some web charting code for
 ## API deployment
 ### Requirements
 * node.js v6 or higher with corresponding npm
-* serverless: `npm i -g serverless`
+* serverless: run `npm i -g serverless` to install.
 ### Installation
+Run the following commands in the shell from the top level directory:
 ```shell
 cd api
 serverless deploy
@@ -33,8 +34,13 @@ note the output URL here and update the [URL in the web code](https://github.com
 
 Connect as per the [schematic](esp32/schematic.jpg).
 
-Sometimes you can find packages with the termistor and resistor combined as in my setup:
-<br />![Photo of hardware](photo.jpg "Photo of hardware.")
+The following photo shows the pins on the feather board you need to connect wires to:
+<br />![esp32 feather pins used.](esp32_pins.jpg "esp32 feather pins used.")
+
+Sometimes you can find packages with the thermistor and resistor combined as in my setup:
+<br />![Photo of hardware.](photo.jpg "Photo of hardware.")
+In that case connect from the pin marked GND on the feather board to the "-" pin on the thermistor unit, from the "A4/36" (input) pin to the "S" pin on the thermistor unit, and the pin marked "3V" (actually 3.3V) on the feather board to the remaining pin on the thermistor unit.
+<br />![Thermistor unit pins.](thermistor_pins.jpg "Thermistor unit pins.")
 
 ## Configure and transfer code to the sensor
 ### Requirements
@@ -43,7 +49,7 @@ Sometimes you can find packages with the termistor and resistor combined as in m
 3. Grab the USB drivers from  [https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers] and then connect the feather board over USB to your computer.
 
 ### Configuration and transfer
-
+Run the following commands in the shell from the top level directory:
 ```shell
 cd esp32
 make menuconfig
