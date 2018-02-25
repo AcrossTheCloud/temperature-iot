@@ -38,8 +38,8 @@ Sometimes you can find packages with the termistor and resistor combined as in m
 
 ## Configure and transfer code to the sensor
 ### Requirements
-1. Set up the esp32 toolchain. [docs](https://esp-idf.readthedocs.io/en/latest/get-started/index.html#setup-toolchain)
-2. [Get the esp32 IoT development framework)(https://esp-idf.readthedocs.io/en/latest/get-started/index.html#get-esp-idf) then [setup the path to the esp32 IoT development framework] (https://esp-idf.readthedocs.io/en/latest/get-started/index.html#setup-path-to-esp-idf). Note no need to go on to set up a project as there's one supplied here which we just need to configure and transfer.
+1. [Set up the esp32 toolchain.](https://esp-idf.readthedocs.io/en/latest/get-started/index.html#setup-toolchain)
+2. [Get the esp32 IoT development framework](https://esp-idf.readthedocs.io/en/latest/get-started/index.html#get-esp-idf) then [setup the path to the esp32 IoT development framework](https://esp-idf.readthedocs.io/en/latest/get-started/index.html#setup-path-to-esp-idf). Note no need to go on to set up a project as there's one supplied here which we just need to configure and transfer.
 3. Grab the USB drivers from  [https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers] and then connect the feather board over USB to your computer.
 
 ### Configuration and transfer
