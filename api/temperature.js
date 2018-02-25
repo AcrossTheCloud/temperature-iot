@@ -29,6 +29,9 @@ module.exports.get = function(event, context, callback) {
           console.log("Query succeeded.");
           const response = {
             statusCode: 200,
+            headers: {
+              "Access-Control-Allow-Origin" : "*",
+            },
             body: JSON.stringify(data),
           };
           callback(null, response);
