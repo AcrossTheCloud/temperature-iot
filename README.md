@@ -1,5 +1,5 @@
 # temperature-iot
-esp32 + lambda API + charting code for temperature sensing
+How to use an esp32 board plus an AWS Lambda API plus some web charting code for temperature sensing.
 
 ## Steps
 1. Pick a region from [the region list](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/) that supports API Gateway, Lambda, DynamoDB, and IoT, and make sure you use that region (from the console dropdown menu) when it comes to configure AWS IoT, and also update in the [serverless.yml file](https://github.com/AcrossTheCloud/temperature-iot/blob/master/api/serverless.yml#L24) with the corresponding region string from the [table here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).
