@@ -59,3 +59,6 @@ certs/
 
 # Old esp32 SDK config
 sdkconfig.old
+
+# Serverless
+.serverless/
