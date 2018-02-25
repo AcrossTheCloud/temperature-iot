@@ -59,7 +59,7 @@ make flash
 ```
 
 ## End result
-You can see what this looks here: [https://temperature.acrossthecloud.net]
+You can see what this looks here: https://temperature.acrossthecloud.net
 
 ## Legal
 AWS and SNTP portions of the esp32 code from the [Espressif IoT Development Framework](https://github.com/espressif/esp-idf) licensed under the [Apache license](LICENSE.apache), the rest licensed under the [GPL-v3 license](LICENSE).
