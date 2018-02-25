@@ -357,7 +357,7 @@ void aws_iot_task(void *param) {
         }
 
         ESP_LOGI(TAG, "-->sleep");
-        vTaskDelay(5000 / portTICK_RATE_MS);
+        vTaskDelay(60000 / portTICK_RATE_MS);
         float temperature = getTemperature();
         time_t now; time(&now);
         sprintf(cPayload, "{\"partition\" : 1, \"time\" : %lu, \"temperature\" : %.2f}", now, temperature);
