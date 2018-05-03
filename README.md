@@ -65,7 +65,9 @@ make flash
 ```
 
 ## End result
-You can see what this looks here: https://temperature.acrossthecloud.net
+The temperature sensor can then be used to monitor the temperature of a location. It is sending its results to the DynamoDB (NoSQL) database, as exposed by a serverless cloud API, and then these temperature results can be graphed as shown using the web graphing code, as shown in this example:
+<br />![Example graph.](graph.png "Example graph.")
+You can view the current temperature graph for my study here: https://temperature.acrossthecloud.net
 
 ## Legal
 AWS and SNTP portions of the esp32 code from the [Espressif IoT Development Framework](https://github.com/espressif/esp-idf) licensed under the [Apache license](LICENSE.apache), the rest licensed under the [GPL-v3 license](LICENSE).
