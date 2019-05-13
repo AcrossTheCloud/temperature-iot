@@ -19,7 +19,7 @@ service: temperature
 
 provider:
   name: aws
-  runtime: nodejs6.10
+  runtime: nodejs8.10
   stage: prod
   region: ap-southeast-2
   iamRoleStatements:
