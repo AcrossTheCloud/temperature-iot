@@ -45,7 +45,7 @@
 #include <driver/adc.h>
 
 #include "lwip/err.h"
-#include "apps/sntp/sntp.h"
+#include "lwip/apps/sntp.h"
 
 #include "nvs.h"
 #include "nvs_flash.h"
